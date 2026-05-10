@@ -1,21 +1,10 @@
 #include <stdio.h>
 
-const unsigned int VERSION[1U] = {2029U};
-
 int array_2063[200U] = {0U};
 int N_2063;
 
-static void dummy(void);
 static void init_2063(void);
 static void sol_2063(void);
-
-void (*sol)(void);
-void (*init)(void);
-
-static void dummy(void)
-{
-    ;
-}
 
 static void init_2063(void)
 {
@@ -67,7 +56,7 @@ static void sol_2063(void)
                 result = idx;
                 break;
             }
-
+            
         }
     }
     printf("%d\n", result);
@@ -95,24 +84,55 @@ static void sol_2029(void)
     }
 }
 
+int N_2046;
+
+static void init_2046(void);
+static void sol_2046(void);
+
+static void init_2046(void)
+{
+    scanf("%d", &N_2046);
+}
+
+static void sol_2046(void)
+{
+    int idx;
+    for(idx=0;idx<N_2046;++idx)
+    {
+        printf("#");
+    }
+}
+
+const unsigned int VERSION[1U] = {2046U};
+
+void (*sol)(void);
+void (*init)(void);
+
+typedef struct {
+    unsigned int version;
+    void (*init)(void);
+    void (*sol)(void);
+} Problem;
+
+Problem problems[] = 
+{
+    {2063U, init_2063, sol_2063},
+    {2029U, init_2029, sol_2029},
+    {2046U, init_2046, sol_2046}
+};
+
 int main(int argc, char **argv)
 {
-    if(2063U == VERSION[0U])
+    int i;
+    int count = sizeof(problems) / sizeof(problems[0]);
+
+    for(i = 0; i < count; ++i)
     {
-        init = init_2063;
-        sol = sol_2063;
+        if(problems[i].version == VERSION[0])
+        {
+            problems[i].init();
+            problems[i].sol();
+        }
     }
-    else if(2029U == VERSION[0U])
-    {
-        init = init_2029;
-        sol = sol_2029;
-    }
-    else
-    {
-        init = dummy;
-        sol = dummy;
-    }
-    init();
-    sol();
     return 0;
 }
