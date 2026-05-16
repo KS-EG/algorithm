@@ -1,138 +1,86 @@
 #include <stdio.h>
 
-int array_2063[200U] = {0U};
-int N_2063;
+static void init_2027(void);
+static void sol_2027(void);
 
-static void init_2063(void);
-static void sol_2063(void);
-
-static void init_2063(void)
+static void init_2027(void)
 {
-    int idx;
-    int num;
-    for(idx = 0; idx < 200U; ++idx)
-    {
-        array_2063[idx] = 0;
-    }
-    scanf("%d", &N_2063);
-    for(idx=0; idx < N_2063; ++idx)
-    {
-        scanf("%d", &num);
-        array_2063[num] = 1;
-    }
+    ;
 }
 
-static void sol_2063(void)
+static void sol_2027(void)
 {
-    int idx;
-    int num = 0;
+    printf("#++++\n");
+    printf("+#+++\n");
+    printf("++#++\n");
+    printf("+++#+\n");
+    printf("++++#\n");
+}
+
+int N_2025;
+static void init_2025(void);
+static void init_2025(void)
+{
+    N_2025 = 0;
+    scanf("%d", &N_2025);
+}
+
+static void sol_2025(void);
+static void sol_2025(void)
+{
     int result = 0;
-    int cnt = 0;
-    for(idx = 0; idx < 200; ++idx)
+    int index;
+    for(index = 0; index <= N_2025; ++index)
     {
-        if(1 == array_2063[idx])
-        {
-            cnt = cnt + 1;            
-        }
-    }
-    for(idx = 0; idx < 200; ++idx)
-    {
-        if(1 == array_2063[idx])
-        {
-            num = num + 1;            
-        }
-        if(cnt % 2 == 0)
-        {
-            if(num == ((cnt / 2) + 2))
-            {
-                result = idx;
-                break;
-            }
-        }
-        else
-        {
-            if(num == ((cnt / 2) + 1))
-            {
-                result = idx;
-                break;
-            }
-            
-        }
+        result = result + index;
     }
     printf("%d\n", result);
 }
 
-int a_2029;
-int b_2029;
-int T_2029;
+#define NUM 1938
+int nums_1938[2];
 
-static void init_2029(void);
-static void sol_2029(void);
-
-static void init_2029(void)
+static void init_1938(void);
+static void init_1938(void)
 {
-    scanf("%d", &T_2029);
+    scanf("%d %d", &nums_1938[0], &nums_1938[1]);
 }
 
-static void sol_2029(void)
+static void sol_1938(void);
+static void sol_1938(void)
 {
-    int idx;
-    for(idx=0; idx<T_2029; ++idx)
-    {
-        scanf("%d %d", &a_2029, &b_2029);
-        printf("#%d %d %d\n", (idx+1), (a_2029 / b_2029), (a_2029 % b_2029));
-    }
+    printf("%d\n", nums_1938[0] + nums_1938[1]);
+    printf("%d\n", nums_1938[0] - nums_1938[1]);
+    printf("%d\n", nums_1938[0] * nums_1938[1]);
+    printf("%d\n", nums_1938[0] / nums_1938[1]);
 }
 
-int N_2046;
-
-static void init_2046(void);
-static void sol_2046(void);
-
-static void init_2046(void)
-{
-    scanf("%d", &N_2046);
-}
-
-static void sol_2046(void)
-{
-    int idx;
-    for(idx=0;idx<N_2046;++idx)
-    {
-        printf("#");
-    }
-}
-
-const unsigned int VERSION[1U] = {2046U};
-
-void (*sol)(void);
-void (*init)(void);
-
-typedef struct {
-    unsigned int version;
-    void (*init)(void);
-    void (*sol)(void);
-} Problem;
-
-Problem problems[] = 
-{
-    {2063U, init_2063, sol_2063},
-    {2029U, init_2029, sol_2029},
-    {2046U, init_2046, sol_2046}
-};
+static void (*init)(void);
+static void (*sol)(void);
 
 int main(int argc, char **argv)
 {
-    int i;
-    int count = sizeof(problems) / sizeof(problems[0]);
-
-    for(i = 0; i < count; ++i)
+    if(2027 == NUM)
     {
-        if(problems[i].version == VERSION[0])
-        {
-            problems[i].init();
-            problems[i].sol();
-        }
+        init = init_2027;
+        sol = sol_2027;
     }
+    else if(2025 == NUM)
+    {
+        init = init_2025;
+        sol = sol_2025;
+    }
+    else if(1938 == NUM)
+    {
+        init = init_1938;
+        sol = sol_1938;
+    }
+    else
+    {
+        init = init_2027;
+        sol = sol_2027;
+    }
+    init();
+    sol();
     return 0;
 }
