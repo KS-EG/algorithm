@@ -10,11 +10,13 @@ int main (int argc, char **argv) {
     } else if (problem == 181850) {
         printf("181932\n");
         printf("%d\n", solution_181850(1.2));
+    } else if (problem == 181930) {
+        printf("181930\n");
+        printf("%d\n", solution_181930(1, 1, 1));
+        printf("%d\n", solution_181930(1, 2, 3));
+        printf("%d\n", solution_181930(2, 2, 2));
     } else {
         /*noop*/
-
     }
-
-
     return 0;
 }

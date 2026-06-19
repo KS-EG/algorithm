@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include "sol.h"
 
-const int problem = 181850;
+const int problem = 181930;
 
 char* solution_181932 (const char* code) {
     // return 값은 malloc 등 동적 할당을 사용해주세요. 할당 길이는 상황에 맞게 변경해주세요.
@@ -55,4 +55,24 @@ char* solution_181932 (const char* code) {
 int solution_181850 (double flo) {
     int ret = (int)flo;
     return ret;
+}
+
+int solution_181930 (int a, int b, int c) {
+    int answer = 0;
+    int part1 = (a + b + c);
+    int part2 = (a * a + b * b + c * c);
+    int part3 = (a * a * a + b * b * b + c * c * c);
+    if ((a == b) && 
+        (b == c)) {
+        answer = part1 * part2 * part3;
+    } else {
+        if ((a == b) || 
+            (b == c) || 
+            (c == a)) {
+            answer = part1 * part2;
+        } else {
+            answer = part1;
+        }
+    }
+    return answer;
 }

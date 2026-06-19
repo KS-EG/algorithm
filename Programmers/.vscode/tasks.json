@@ -1,0 +1,17 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run EXE (cmd)",
+      "type": "shell",
+      "command": "${workspaceFolder}\\Debug\\Programmers.exe",
+      "options": {
+        "shell": {
+          "executable": "cmd.exe",
+          "args": ["/c"]
+        }
+      },
+      "problemMatcher": []
+    }
+  ]
+}
