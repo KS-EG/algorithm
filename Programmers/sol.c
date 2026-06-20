@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include "sol.h"
 
-const int problem = 181930;
+const int problem = 181840;
 
 char* solution_181932 (const char* code) {
     // return 값은 malloc 등 동적 할당을 사용해주세요. 할당 길이는 상황에 맞게 변경해주세요.
@@ -74,5 +74,52 @@ int solution_181930 (int a, int b, int c) {
             answer = part1;
         }
     }
+    return answer;
+}
+
+/**
+ * 정수가 담긴 리스트 num_list가 주어집니다. 
+ * num_list의 홀수만 순서대로 이어 붙인 수와 짝수만 순서대로 이어 붙인 수의 합을 
+ * return하도록 solution 함수를 완성해주세요.
+ */
+int solution_181928 (int num_list[], size_t num_list_len) {
+    int num_odd = 0;
+    int num_even = 0;
+    int index = 0;
+    for (index = 0; index < num_list_len; ++index) {
+        if ((num_list[index] % 2) == 0) {
+            num_even = num_even + num_list[index];
+            num_even = num_even * 10;
+        } else {
+            num_odd = num_odd + num_list[index];
+            num_odd = num_odd * 10;
+        }
+    }
+    int ret = (num_even / 10) + (num_odd / 10);
+    return ret;
+}
+
+/**
+ * 정수 리스트 num_list와 찾으려는 정수 n이 주어질 때, 
+ * num_list안에 n이 있으면 1을 없으면 0을 return하도록 solution 함수를 완성해주세요.
+ */
+int solution_181840 (int num_list[], size_t num_list_len, int n) {
+    int answer = 0;
+    int index = 0;
+    for (index = 0; index < num_list_len; ++index) {
+        if (num_list[index] == n) {
+            answer = 1;
+            break;
+        }
+    }
+    return answer;
+}
+
+/**
+ * 정수 n이 주어질 때, n을 문자열로 변환하여 return하도록 solution 함수를 완성해주세요.
+ */
+char* solution_181845 (int n) {
+    // return 값은 malloc 등 동적 할당을 사용해주세요. 할당 길이는 상황에 맞게 변경해주세요.
+    char* answer = (char*)malloc (1);
     return answer;
 }
