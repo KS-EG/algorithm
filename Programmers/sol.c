@@ -123,3 +123,31 @@ char* solution_181845 (int n) {
     char* answer = (char*)malloc (1);
     return answer;
 }
+
+char* solution_181873 (const char* my_string, const char* alp) {
+    // return 값은 malloc 등 동적 할당을 사용해주세요. 할당 길이는 상황에 맞게 변경해주세요.
+    int size = 0;
+    int index = 0;
+    while (my_string[size] != '\0') {
+        size = size + 1;
+    }
+    char* answer = (char*) malloc (size + 1);
+    size = 0;
+
+    while (my_string[size] != '\0') {
+        if (my_string[size] == alp[0]) {
+            if ((my_string[size] >= 'a') &&
+                (my_string[size] <= 'z')) {
+                answer[size] = (char) (my_string[size] + 'A' - 'a');
+            } else {
+                answer[size] = (char) (my_string[size]);
+            }
+        } else {
+            answer[size] = (char) (my_string[size]);
+        }
+        size = size + 1;
+    }
+    answer[size] = '\0';
+
+    return answer;    
+}
